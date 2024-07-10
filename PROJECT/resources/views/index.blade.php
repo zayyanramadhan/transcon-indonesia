@@ -243,6 +243,13 @@ var span = document.getElementsByClassName("close")[0];
 span.onclick = function() {
   modal.style.display = "none";
 }
+
+var myBtndetail = document.getElementById("myBtndetail");
+myBtndetail.onclick = function() {
+    var e = $('<div class="items"><label for="fname">Item Name:</label><br><input type="text" class="itemname" name="fname"><br><label for="lname">Quantity:</label><br><input type="text" class="quantity" name="lname"><br><br></div>');
+    $('#itemslist').append(e);   
+}
+
           }
       });
     }

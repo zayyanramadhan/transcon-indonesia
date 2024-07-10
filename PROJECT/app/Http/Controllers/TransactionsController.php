@@ -71,18 +71,17 @@ class TransactionsController extends Controller
         <label for='lname'>Transaction Date:</label><br>
         <input type='date' id='transdate' value='$trans->transaction_date' name='lname'><br><br>
         <label for='fname'>Detail Items</label>
-        <button type='button' id='myBtndetail'>Add Item</button><br>";
+        <button type='button' id='myBtndetail'>Add Item</button><br><div id='itemslist'>";
         foreach ($transdetail as $key => $value) {
-            $html.="<div id='itemslist'>
+            $html.="
             <div class='items'>
                 <label for='fname'>Item Name:</label><br>
                 <input type='text' value='$value->item' class='itemname' name='fname'><br>
                 <label for='lname'>Quantity:</label><br>
                 <input type='number' value='$value->quantity' class='quantity' name='lname'><br><br>
-            </div>
             </div>";
         }
-        $html.="<button type='button' value='button' onclick='update()'>Update</button>";
+        $html.="</div><button type='button' value='button' onclick='update()'>Update</button>";
         return response()->json([
             'data' => $html,
         ]);
