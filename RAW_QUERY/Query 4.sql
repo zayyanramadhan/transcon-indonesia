@@ -9,18 +9,12 @@ JOIN (
     FROM activity_details ad1
 ) ad ON a.id = ad.id_activity group by a.title;
 
-SELECT a.title, COUNT(ad.type) as total_activity_type ,SUM(ad.weight) as total_weight
+SELECT a.title,
+       COUNT(DISTINCT ad.type) AS total_types,
+       SUM(ad.weight) AS total_weight
 FROM activities a
-JOIN (
-    SELECT ad1.*
-    FROM activity_details ad1
-    JOIN (
-        SELECT type, id
-        FROM activity_details
-        GROUP BY type, id
-    ) ad2 ON ad1.id = ad2.id
-) ad ON a.id = ad.id_activity group by a.title;
-
+JOIN activity_details ad ON a.id = ad.id_activity
+GROUP BY a.title;	
 
 SELECT a.title, ad.type, ad.weight
 FROM activities a
