@@ -186,6 +186,24 @@ myBtndetail.onclick = function() {
           success: function(data, statusText, success) {
 
     modal.style.display = "none";
+    
+    $("#formdata").html(`<span class="close">&times;</span>
+        <label for="fname">Transaction No:</label><br>
+        <input type="number" id="transno" name="fname"><br>
+        <label for="lname">Transaction Date:</label><br>
+        <input type="date" id="transdate" name="lname"><br><br>
+        <label for="fname">Detail Items</label>
+        <button type="button" id="myBtndetail">Add Item</button><br>
+        <div id="itemslist">
+        <div class="items">
+            <label for="fname">Item Name:</label><br>
+            <input type="text" class="itemname" name="fname"><br>
+            <label for="lname">Quantity:</label><br>
+            <input type="number" class="quantity" name="lname"><br><br>
+        </div>
+        </div>
+        <button type="button" value="button" onclick="send()">submit</button>`);
+
             list();
           }
       });
